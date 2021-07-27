@@ -10,118 +10,88 @@
     <link href="resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="css/simple-sidebar.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="style.css">
     <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
     <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-    <style>
-    body {
-        font-family: "Lato";
-    }
-
-    .main-head {
-        height: 150px;
-        background: #FFF;
-
-    }
-
-    .sidenav {
-        height: 100%;
-        background-color: #000;
-        overflow-x: hidden;
-        padding-top: 20px;
-    }
-
-
-    .main {
-        padding: 0px 10px;
-    }
-
-    @media screen and (max-height: 450px) {
-        .sidenav {
-            padding-top: 15px;
-        }
-    }
-
-    @media screen and (max-width: 450px) {
-        .login-form {
-            margin-top: 10%;
-        }
-
-        .register-form {
-            margin-top: 10%;
-        }
-    }
-
-    @media screen and (min-width: 768px) {
-        .main {
-            margin-left: 40%;
-        }
-
-        .sidenav {
-            width: 40%;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-        }
-
-        .login-form {
-            margin-top: 80%;
-        }
-
-        .register-form {
-            margin-top: 20%;
-        }
-    }
-
-
-    .login-main-text {
-        margin-top: 20%;
-        padding: 60px;
-        color: #fff;
-    }
-
-    .login-main-text h2 {
-        font-weight: 300;
-    }
-
-    .btn-black {
-        background-color: #7a7a7a !important;
-        color: #fff;
-    }
-    </style>
 
 </head>
 
 <body>
-    <div class="container-fluid">
-        <div class="sidenav"> <!-- Navegacion o ventana lateral -->
-        <img src="https://www.laguiadelvaron.com/wp-content/uploads/2019/04/Fondos-pantalla-carros-www.laguiadelvaron-1.jpg" width="100%" height="110%">
-            <!-- <div class="login-main-text"> 
+    <!-- <div class="container-fluid">
+            <div class="sidenav">
+                <div class="background">
+                    <div class="transbox">
+                        <p>FLIP CARS</p>
+                    </div>
+                </div>
+                 Navegacion o ventana lateral
+                <img src="https://www.laguiadelvaron.com/wp-content/uploads/2019/04/Fondos-pantalla-carros-www.laguiadelvaron-1.jpg"
+                    width="100%" height="110%">
+                 <div class="login-main-text"> 
                 <h2>FlipCars<br> Iniciar Sesión</h2>
                 <p>Iniciar desde aqui para acceder</p>
-            </div> -->
-        </div>
-        <div class="main">
-            <div class="col-md-6 col-sm-12">
-                <div class="login-form">
-                    <form>
-                        <div class="form-group">
-                            <label>Usuario</label>
-                            <input type="text" class="form-control" placeholder="Ingrese usuario">
-                        </div>
-                        <div class="form-group">
-                            <label>Contraseña</label>
-                            <input type="password" class="form-control" placeholder="Ingrese contraseña">
-                        </div>
-                        <button type="submit" class="btn btn-black">Iniciar sesión</button>
-                    </form>
+            </div> 
+            </div>
+            <div class="main">
+                <div class="col-md-6 col-sm-12">
+                    <div class="login-form">
+                        <form>
+                            <div class="form-group">
+                                <label>Usuario</label>
+                                <input type="text" class="form-control" placeholder="Ingrese usuario">
+                            </div>
+                            <div class="form-group">
+                                <label>Contraseña</label>
+                                <input type="password" class="form-control" placeholder="Ingrese contraseña">
+                            </div>
+                            <button type="submit" class="btn btn-black">Iniciar sesión</button>
+                        </form>
+                    </div>
                 </div>
             </div>
+
+        </div>
+    </div> -->
+
+    <section id="pantalla_dividida">
+        <div class="izquierda" style="text-align: center">
+            <br /><br /> <br /><br /> <br />
+            <div style="font-family: Georgia, 'Times New Roman', Times, serif">
+                <h1>FLIP CARS</h1>
+            </div>
+            <div style="font-family: Georgia, 'Times New Roman', Times, serif; opacity: 0.5;">
+                <p>Venta y Alquiler de Vehiculos</p>
+            </div>
+            <br /><br /> <br />
+            <div class="main">
+                <div class="col-md-6 col-sm-12">
+                    <div class="login-form">
+                        <form>
+                            <div class="form-group">
+                                <label><h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Usuario</h5></label>
+                                <input type="text" class="form-control" placeholder="Ingrese usuario" required>
+                            </div>
+                            <div class="form-group">
+                                <label><h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Contraseña</h5></label>
+                                <input type="password" class="form-control" placeholder="Ingrese contraseña" required>
+                            </div>
+                            <button type="submit" class="btn btn-black">Iniciar sesión</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- <footer class="bg-light text-center text-lg-start">
+                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+                    <p>© Oficinas Centrales: +506 2525-6596 San Jose, Costa Rica</p>
+                </div>
+
+            </footer> -->
+        </div>
+        <div class="derecha">
+
         </div>
 
-
-    </div>
+    </section>
 
 
 
