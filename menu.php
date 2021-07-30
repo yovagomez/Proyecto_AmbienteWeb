@@ -34,8 +34,8 @@
                         Gestión Vehiculos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Vehiculos Alquiler</a>
-                        <a class="dropdown-item" href="#">Vehiculos Venta</a>
+                        <a class="dropdown-item" href="VehiculosAlquiler.php">Vehiculos Alquiler</a>
+                        <a class="dropdown-item" href="VehiculosVenta.php">Vehiculos Venta</a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
