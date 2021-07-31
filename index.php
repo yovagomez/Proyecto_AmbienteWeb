@@ -12,7 +12,7 @@
 
         CerrarDB($AbiertaDB);
 
-        header("Location: inicio.php"); 
+        header("Location: menu.php"); 
     }
 
     if(isset($_POST['btnRegistro']))
