@@ -47,13 +47,6 @@
                         <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
-                <!--<li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>
-                form class="form-inline my-2 my-lg-0">
-                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>-->
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
@@ -63,7 +56,7 @@
                     <a class="nav-link" href="#">Ajustes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Salir</a>
+                    <a class="nav-link" href="salir.php">Salir</a>
                 </li>
             </ul>
         </div>

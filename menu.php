@@ -31,8 +31,6 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="VehiculosAlquiler.php">Vehiculos Alquiler</a>
                         <a class="dropdown-item" href="VehiculosVenta.php">Vehiculos Venta</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -50,13 +48,13 @@
             </ul>
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="#">{Nombre de Usuario}</a>
+                    <a class="nav-link" readonly="true">{Nombre de Usuario}</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Ajustes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Salir</a>
+                    <a class="nav-link" href="salir.php">Salir</a>
                 </li>
             </ul>
         </div>

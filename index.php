@@ -8,11 +8,16 @@
         $usuario = $_POST['txtUsuario'];
         $password = $_POST['txtPassword'];
         $queryLogin = "CALL validarLogin('$usuario','$password')";
-        $AbiertaDB -> query($queryLogin);
-
+        $Resultado = $AbiertaDB -> query($queryLogin);
+        $filas = mysqli_num_rows($Resultado);
+        if($filas > 0){
+            header("Location: menu.php"); 
+        }else{
+            $AbiertaDB -> error;
+        } 
+        mysqli_free_result($Resultado);
         CerrarDB($AbiertaDB);
 
-        header("Location: menu.php"); 
     }
 
     if(isset($_POST['btnRegistro']))
@@ -46,42 +51,6 @@
 </head>
 
 <body>
-    <!-- <div class="container-fluid">
-            <div class="sidenav">
-                <div class="background">
-                    <div class="transbox">
-                        <p>FLIP CARS</p>
-                    </div>
-                </div>
-                 Navegacion o ventana lateral
-                <img src="https://www.laguiadelvaron.com/wp-content/uploads/2019/04/Fondos-pantalla-carros-www.laguiadelvaron-1.jpg"
-                    width="100%" height="110%">
-                 <div class="login-main-text"> 
-                <h2>FlipCars<br> Iniciar Sesión</h2>
-                <p>Iniciar desde aqui para acceder</p>
-            </div> 
-            </div>
-            <div class="main">
-                <div class="col-md-6 col-sm-12">
-                    <div class="login-form">
-                        <form>
-                            <div class="form-group">
-                                <label>Usuario</label>
-                                <input type="text" class="form-control" placeholder="Ingrese usuario">
-                            </div>
-                            <div class="form-group">
-                                <label>Contraseña</label>
-                                <input type="password" class="form-control" placeholder="Ingrese contraseña">
-                            </div>
-                            <button type="submit" class="btn btn-black">Iniciar sesión</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-    </div> -->
-
     <section id="pantalla_dividida">
         <div class="izquierda" style="text-align: center">
             <br /><br /> <br /><br /> <br />
@@ -121,24 +90,8 @@
                     </div>
                 </div>
             </div>
-            <!-- <footer class="bg-light text-center text-lg-start">
-                <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                    <p>© Oficinas Centrales: +506 2525-6596 San Jose, Costa Rica</p>
-                </div>
-
-            </footer> -->
         </div>
         <div class="derecha">
-
         </div>
-
     </section>
-
-
-
-
-
-
-
-
 </body>
