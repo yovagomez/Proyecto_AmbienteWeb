@@ -15,9 +15,15 @@
         $telefono = $_POST['txtTel'];
         $rol = $_POST['cboPerfil'];
         $contraseña = $_POST['txtContraseña'];
-        $queryRegistrar = "CALL RegistrarUsuario('$cedula','$fechaNaci','$nombre','$apellidoP','$apellidoS','$correo','$telefono','$rol','$contraseña')";
-        $AbiertaDB -> query($queryRegistrar);
-        header("Location: inicio.php");
+        $queryRegistrar = "CALL RegistrarUsuario('$cedula','$fechaNaci','$nombre','$apellidoP','$apellidoS','$correo','$telefono',$rol,'$contraseña')";
+        if($AbiertaDB -> query($queryRegistrar)){
+            header("Location: menu.php");
+
+        }else{
+            echo $queryRegistrar;
+            echo $AbiertaDB -> error;
+        }
+        
 
         CerrarDB($AbiertaDB);
 
@@ -118,10 +124,10 @@
                                 <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Rol</h5>
 
                                 <select id="cboPerfil" name="cboPerfil" class="form-control">
-                                    <option value="">Seleccione el rol</option>
-                                    <option value="valor1">Gerente</option>
-                                    <option value="valor2">Administrador</option>
-                                    <option value="valor3">Agente</option>
+                                    <option value="0">Seleccione el rol</option>
+                                    <option value="1">Gerente</option>
+                                    <option value="2">Administrador</option>
+                                    <option value="3">Agente</option>
                                 </select>
                             </div>
                             <br />
