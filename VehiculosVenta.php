@@ -2,7 +2,7 @@
 
 session_start();
 include 'conexionBD.php';
-$bdAbierta = AbrirBD();
+$bdAbierta = AbrirDB();
 
 /*if(isset($_POST['btnIniciarSesion']))
 {
@@ -18,7 +18,7 @@ $bdAbierta = AbrirBD();
 $queryvehiculosventa = "CALL Consultar_VehiculosVenta('-1')";
 $respuestavehiculosventa = $bdAbierta -> query($queryvehiculosventa);
 
-CerrarBD($bdAbierta);
+CerrarDB($bdAbierta);
 
 ?>
 
@@ -80,7 +80,7 @@ CerrarBD($bdAbierta);
                     <a class="nav-link" href="#">Ajustes</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#">Salir</a>
+                    <a class="nav-link" href="salir.php">Salir</a>
                 </li>
             </ul>
         </div>
