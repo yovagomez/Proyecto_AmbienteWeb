@@ -1,3 +1,29 @@
+<?php
+     if(isset($_POST['btnNuevaFactura'])) 
+     {
+         include 'conexion.php';
+         $AbiertaDB = AbrirDB();
+     
+         $cedula = $_POST['txtCedula'];
+         $idAgente = $_POST['cboIdAgente'];
+         $idVehiculo = $_POST['cboIdVehiculo'];
+         $fechaEntrega = $_POST['txtFechaEntrega'];
+         $total = $_POST['txtTotal'];
+         $descripcion = $_POST['txtDescripcion'];
+         $queryNewFactura = "CALL nuevaFactura('$cedula','$idAgente',$idVehiculo,'$fechaEntrega',$total,'$descripcion')";
+         if($AbiertaDB -> query($queryNewFactura)){
+             header("Location: menu.php");
+         
+         }else{
+             echo $AbiertaDB -> error;
+         }
+                
+         CerrarDB($AbiertaDB);
+ 
+     }
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -78,7 +104,7 @@
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cédula</h5>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cédula Cliente</h5>
                         </label>
                         <input type="text" class="form-control" id="txtCedula" name="txtCedula"
                             placeholder="Ingrese cedula">
@@ -93,8 +119,8 @@
                             <option value="1">201540215</option>
                             <option value="2">2564996</option>
                             <option value="3">2123456</option>
-                            <option value="3">102250255</option>
-                            <option value="3">108700964</option>
+                            <option value="4">102250255</option>
+                            <option value="5">108700964</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -105,13 +131,25 @@
                         <select id="cboIdVehiculo" name="cboIdVehiculo" class="form-control">
                             <option value="0">Seleccione código del vehículo</option>
                             <option value="1">1</option>
-                            <option value="2">3</option>
-                            <option value="3">5</option>
-                            <option value="3">7</option>
-                            <option value="3">11</option>
-                            <option value="3">14</option>
-                            <option value="3">19</option>
-                            <option value="3">20</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                            <option value="13">13</option>
+                            <option value="14">14</option>
+                            <option value="15">15</option>
+                            <option value="16">16</option>
+                            <option value="17">17</option>
+                            <option value="18">18</option>
+                            <option value="19">19</option>
+                            <option value="20">20</option>
                         </select>
                     </div>
                     <div class="form-group">
@@ -119,7 +157,7 @@
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Entrega
                             </h5>
                         </label>
-                        <input type="date" class="form-control" id="txtFechaEntrega" name="txtFechaEntrega"
+                        <input type="datetime-local" class="form-control" id="txtFechaEntrega" name="txtFechaEntrega"
                             placeholder="Ingrese la fecha de entrega">
                     </div>
                     <div class="form-group">
@@ -140,7 +178,8 @@
                     </div>
                     <br />
                     <div class="col text-center">
-                        <input type="submit" class="btn btn-info" value="Crear" name="btnNuevaFactura"></input>
+                        <input type="submit" class="btn btn" value="Crear" name="btnNuevaFactura"
+                            style="background-color: #bdbcb9; color: black;"></input>
                         <br /><br />
                     </div>
                 </form>
