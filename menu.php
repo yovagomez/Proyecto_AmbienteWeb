@@ -1,3 +1,9 @@
+<?php
+    session_start();
+    $_SESSION['nombre'] = $usuario;
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -46,17 +52,20 @@
                     </div>
                 </li>
             </ul>
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" readonly="true">{Nombre de Usuario}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Ajustes</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="salir.php">Salir</a>
-                </li>
-            </ul>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <?php echo $_SESSION['NombreAgente']; ?>
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="emple.php">Ajustes</a>
+                        <a class="dropdown-item" href="salir.php">Salir</a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
     <!-- Fin del NavBar/Barra del Menu -->
