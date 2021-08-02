@@ -33,3 +33,13 @@
     height: 280px;
   }
 }
+
+.btn-info {
+  background-color: #bdbcb9 !important;
+  color: black;
+}
+
+.btn-info:hover {
+  background-color: black !important;
+  color: white;
+}
