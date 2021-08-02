@@ -15,6 +15,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
     <link href="templates\estilo.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/b5379856aa.js" crossorigin="anonymous"></script>
     <title>Menu FLIP-CARS</title>
 </head>
 
@@ -53,16 +54,16 @@
                 </li>
             </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" >
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['NombreAgente']; ?>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> Geovanny<?php echo $_SESSION['NombreAgente']; ?>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 100%;">
-                        <a class="dropdown-item" href="emple.php">Ajustes</a>
-                        <a class="dropdown-item" href="emple.php">Crear Factura</a>
-                        <a class="dropdown-item" href="salir.php">Salir</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="emple.php">Ajustes</a>
+                            <a class="dropdown-item" href="emple.php">Crear Factura</a>
+                            <a class="dropdown-item" href="salir.php">Salir</a>
                         </div>
                     </li>
                 </ul>
@@ -74,13 +75,49 @@
     <!-- Carrucel de Imagenes -->
     <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner">
-            <div class="carousel-item active" style="background-image:url('img/audi.jpeg');"></div>
-            <div class="carousel-item" style="background-image:url('img/Meche-1.jpg');"></div>
-            <div class="carousel-item" style="background-image:url('img/Maserati-2.jpg');"></div>
-            <div class="carousel-item" style="background-image:url('img/Mustang-3.jpg');"></div>
-            <div class="carousel-item" style="background-image:url('img/BMW-4.jpg');"></div>
-            <div class="carousel-item" style="background-image:url('img/Toyota-5.jpg');"></div>
-            <div class="carousel-item" style="background-image:url('img/Mitsubishi-6.jpg');"></div>
+            <div class="carousel-item active" style="background-image:url('img/audi.jpeg');">
+                <div class="absolute-div">
+                    <div class="carousel-caption">
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item" style="background-image:url('img/Meche-1.jpg');">
+            <div class="absolute-div">
+                    <div class="carousel-caption">
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                    </div>
+                </div></div>
+            <div class="carousel-item" style="background-image:url('img/Maserati-2.jpg');">
+            <div class="absolute-div">
+                    <div class="carousel-caption">
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                    </div>
+                </div></div>
+            <div class="carousel-item" style="background-image:url('img/Mustang-3.jpg');">
+            <div class="absolute-div">
+                    <div class="carousel-caption">
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                    </div>
+                </div></div>
+            <div class="carousel-item" style="background-image:url('img/BMW-4.jpg');">
+            <div class="absolute-div">
+                    <div class="carousel-caption">
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                    </div>
+                </div></div>
+            <div class="carousel-item" style="background-image:url('img/Toyota-5.jpg');">
+            <div class="absolute-div">
+                    <div class="carousel-caption">
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                    </div>
+                </div></div>
+            <div class="carousel-item" style="background-image:url('img/Mitsubishi-6.jpg');">
+            <div class="absolute-div">
+                    <div class="carousel-caption">
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                    </div>
+                </div></div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
