@@ -78,46 +78,52 @@
             <div class="carousel-item active" style="background-image:url('img/audi.jpeg');">
                 <div class="absolute-div">
                     <div class="carousel-caption">
-                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100) ">ELECTRIFICANDO EL FUTURO</h1>
                     </div>
                 </div>
             </div>
             <div class="carousel-item" style="background-image:url('img/Meche-1.jpg');">
-            <div class="absolute-div">
+                <div class="absolute-div">
                     <div class="carousel-caption">
-                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">AUTOS 100% ELECTRICOS</h1>
                     </div>
-                </div></div>
+                </div>
+            </div>
             <div class="carousel-item" style="background-image:url('img/Maserati-2.jpg');">
-            <div class="absolute-div">
+                <div class="absolute-div">
                     <div class="carousel-caption">
-                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">EMOCIONES AMPLIFICADAS</h1>
                     </div>
-                </div></div>
+                </div>
+            </div>
             <div class="carousel-item" style="background-image:url('img/Mustang-3.jpg');">
-            <div class="absolute-div">
+                <div class="absolute-div">
                     <div class="carousel-caption">
-                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">FlIP CARS EN CASA</h1>
                     </div>
-                </div></div>
+                </div>
+            </div>
             <div class="carousel-item" style="background-image:url('img/BMW-4.jpg');">
-            <div class="absolute-div">
+                <div class="absolute-div">
                     <div class="carousel-caption">
-                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">SERVICIO A TU PUERTA</h1>
                     </div>
-                </div></div>
+                </div>
+            </div>
             <div class="carousel-item" style="background-image:url('img/Toyota-5.jpg');">
-            <div class="absolute-div">
+                <div class="absolute-div">
                     <div class="carousel-caption">
-                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">AMIGABLE CON TU VIDA</h1>
                     </div>
-                </div></div>
+                </div>
+            </div>
             <div class="carousel-item" style="background-image:url('img/Mitsubishi-6.jpg');">
-            <div class="absolute-div">
+                <div class="absolute-div">
                     <div class="carousel-caption">
-                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">Bienvenido a Flip Cars</h1>
+                        <h1 style="opacity: 0.5; filter: alpha(opacity=100)">BIENVENIDO A FLIP CARS</h1>
                     </div>
-                </div></div>
+                </div>
+            </div>
         </div>
         <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
