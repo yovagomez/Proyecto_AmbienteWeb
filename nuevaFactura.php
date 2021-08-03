@@ -1,8 +1,9 @@
 <?php
+
+include 'conexion.php';
+$AbiertaDB = AbrirDB();
      if(isset($_POST['btnNuevaFactura'])) 
      {
-         include 'conexion.php';
-         $AbiertaDB = AbrirDB();
      
          $cedula = $_POST['txtCedula'];
          $idAgente = $_POST['cboIdAgente'];
@@ -18,9 +19,12 @@
              echo $AbiertaDB -> error;
          }
                 
-         CerrarDB($AbiertaDB);
+         
  
      }
+     $queryConsultarAgentes = "CALL consultarAgentes() ";
+     $respuestaAgentes = $AbiertaDB -> query($queryConsultarAgentes);
+     CerrarDB($AbiertaDB);
 ?>
 
 
@@ -115,12 +119,12 @@
                             </h5>
                         </label>
                         <select id="cboIdAgente" name="cboIdAgente" class="form-control">
-                            <option value="0">Seleccione ID agente</option>
-                            <option value="1">201540215</option>
-                            <option value="2">2564996</option>
-                            <option value="3">2123456</option>
-                            <option value="4">102250255</option>
-                            <option value="5">108700964</option>
+                            <?php
+                                    while($fila = mysqli_fetch_array($respuestaAgentes))
+                                    {
+                                        echo "<option value=" . $fila['id'] . ">" . $fila["idAgente"] . "</option>";
+                                    }
+                                ?>
                         </select>
                     </div>
                     <div class="form-group">
