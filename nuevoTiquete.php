@@ -2,7 +2,7 @@
 
 include 'conexion.php';
 $AbiertaDB = AbrirDB();
-     if(isset($_POST['btnNuevaFactura'])) 
+     if(isset($_POST['btnNuevoTiquete'])) 
      {
      
          $cedula = $_POST['txtCedula'];
@@ -18,18 +18,7 @@ $AbiertaDB = AbrirDB();
          }else{
              echo $AbiertaDB -> error;
          }
-                
-         
- 
      }
-     $queryConsultarAgentes = "CALL consultarAgentes() ";
-     $respuestaAgentes = $AbiertaDB -> query($queryConsultarAgentes);
-
-     $queryConsultarVV = "CALL consultarVehiculosVenta() ";
-     $respuestaVV = $AbiertaDB -> query($queryConsultarVV);
-
-     $queryConsultarUsuarios = "CALL consultarUsuarios()";
-     $respuestaUsuarios = $AbiertaDB -> query($queryConsultarUsuarios);
 
      CerrarDB($AbiertaDB);
 ?>
@@ -50,7 +39,7 @@ $AbiertaDB = AbrirDB();
     <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Crear Factura</title>
+    <title>Crear Tiquete</title>
 </head>
 
 <body>
@@ -116,81 +105,55 @@ $AbiertaDB = AbrirDB();
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cédula Cliente</h5>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Marca</h5>
                         </label>
-                        <input type="text" class="form-control" id="txtCedula" name="txtCedula"
-                            placeholder="Ingrese cedula">
+                        <input type="text" class="form-control" id="txtMarca" name="txtMarca"
+                            placeholder="Ingrese la marca">
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">ID Agente
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Modelo
                             </h5>
                         </label>
-                        <select id="cboIdAgente" name="cboIdAgente" class="form-control">
-                            <?php
-                                    while($fila = mysqli_fetch_array($respuestaAgentes))
-                                    {
-                                        echo "<option value=" . $fila['id'] . ">" . $fila["idAgente"] . "</option>";
-                                    }
-                                ?>
-                        </select>
+                        <input type="text" class="form-control" id="txtModelo" name="txtModelo"
+                            placeholder="Ingrese el modelo">
+                        
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Código Vehículo
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Color
                             </h5>
                         </label>
-                        <select id="cboIdVehiculo" name="cboIdVehiculo" class="form-control">
-                        <option value="0">Seleccione código del vehículo</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                        </select>
+                        <input type="text" class="form-control" id="txtColor" name="txtColor"
+                            placeholder="Ingrese el color">
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Entrega
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Placa
                             </h5>
                         </label>
-                        <input type="datetime-local" class="form-control" id="txtFechaEntrega" name="txtFechaEntrega"
-                            placeholder="Ingrese la fecha de entrega">
+                        <input type="text" class="form-control" id="txtPlaca" name="txtPlaca"
+                            placeholder="Ingrese la placa">
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Total
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Año
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtTotal" name="txtTotal"
-                            placeholder="Digíte el monto total">
+                        <input type="text" class="form-control" id="txtAnio" name="txtAnio"
+                            placeholder="Digíte el año">
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Descripción
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Respaldo
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion"
-                            placeholder="Ingrese la descripción">
+                        <input type="text" class="form-control" id="txtRespaldo" name="txtRespaldo"
+                            placeholder="Ingrese el respaldo">
                     </div>
                     <br />
                     <div class="col text-center">
-                        <input type="submit" class="btn btn" value="Crear" name="btnNuevaFactura"
+                        <input type="submit" class="btn btn" value="Crear" name="btnNuevoTiquete"
                             style="background-color: #bdbcb9; color: black;"></input>
                         <br /><br />
                     </div>
