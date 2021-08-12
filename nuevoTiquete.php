@@ -70,9 +70,17 @@ $AbiertaDB = AbrirDB();
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="emple.php">Empleados</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="añdEmp.php">Añadir Empleado</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Servicios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
+                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
                     </div>
                 </li>
             </ul>
@@ -85,8 +93,6 @@ $AbiertaDB = AbrirDB();
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="emple.php">Ajustes</a>
-                            <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                            <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
                             <a class="dropdown-item" href="salir.php">Salir</a>
                         </div>
                     </li>
@@ -94,6 +100,7 @@ $AbiertaDB = AbrirDB();
             </div>
         </div>
     </nav>
+    <!-- Fin del NavBar/Barra del Menu -->
 
     <br /><br /><br /><br />
     <div class="container" style="overflow: scroll;">

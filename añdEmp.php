@@ -1,39 +1,35 @@
 <?php
+    
 
-include 'conexion.php';
-$AbiertaDB = AbrirDB();
-     if(isset($_POST['btnNuevaFactura'])) 
-     {
-     
-         $cedula = $_POST['txtCedula'];
-         $idAgente = $_POST['cboIdAgente'];
-         $idVehiculo = $_POST['cboIdVehiculo'];
-         $fechaEntrega = $_POST['txtFechaEntrega'];
-         $total = $_POST['txtTotal'];
-         $descripcion = $_POST['txtDescripcion'];
-         $queryNewFactura = "CALL nuevaFactura('$cedula','$idAgente',$idVehiculo,'$fechaEntrega',$total,'$descripcion')";
-         if($AbiertaDB -> query($queryNewFactura)){
-             header("Location: menu.php");
-         
-         }else{
-             echo $AbiertaDB -> error;
-         }
-                
-         
- 
-     }
-     $queryConsultarAgentes = "CALL consultarAgentes() ";
-     $respuestaAgentes = $AbiertaDB -> query($queryConsultarAgentes);
+    if(isset($_POST['btnRegistrar'])) 
+    {
+        include 'conexion.php';
+        $AbiertaDB = AbrirDB();
+    
+        $cedula = $_POST['txtCedula'];
+        $fechaNaci = $_POST['txtFechaNaci'];
+        $nombre = $_POST['txtNombre'];
+        $apellidoP = $_POST['txtApellido1'];
+        $apellidoS = $_POST['txtApellido2'];
+        $correo = $_POST['txtCorreo'];
+        $telefono = $_POST['txtTel'];
+        $rol = $_POST['cboPerfil'];
+        $contraseña = $_POST['txtContraseña'];
+        $queryRegistrar = "CALL RegistrarUsuario('$cedula','$fechaNaci','$nombre','$apellidoP','$apellidoS','$correo','$telefono',$rol,'$contraseña')";
+        if($AbiertaDB -> query($queryRegistrar)){
+            header("Location: emple.php");
 
-     $queryConsultarVV = "CALL consultarVehiculosVenta() ";
-     $respuestaVV = $AbiertaDB -> query($queryConsultarVV);
+        }else{
+            echo $queryRegistrar;
+            echo $AbiertaDB -> error;
+        }
+        
 
-     $queryConsultarUsuarios = "CALL consultarUsuarios()";
-     $respuestaUsuarios = $AbiertaDB -> query($queryConsultarUsuarios);
+        CerrarDB($AbiertaDB);
 
-     CerrarDB($AbiertaDB);
+    }
+
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -47,10 +43,7 @@ $AbiertaDB = AbrirDB();
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
     <link href="templates\estilo.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/b5379856aa.js" crossorigin="anonymous"></script>
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
-    <title>Crear Factura</title>
+    <title>Menu FLIP-CARS</title>
 </head>
 
 <body>
@@ -113,91 +106,93 @@ $AbiertaDB = AbrirDB();
     </nav>
     <!-- Fin del NavBar/Barra del Menu -->
 
+    <!-- Inicio de espacio de información -->
     <br /><br /><br /><br />
     <div class="container" style="overflow: scroll;">
         <div class="panel panel-info">
             <div class="panel-heading" style="text-align: center;">
-                <h3>Nueva Factura</h3>
+                <h3>Nuevo Empleado</h3>
             </div>
             <div class="panel-body">
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cédula Cliente</h5>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cedula</h5>
                         </label>
                         <input type="text" class="form-control" id="txtCedula" name="txtCedula"
-                            placeholder="Ingrese cedula">
+                            placeholder="Ingrese el numero de identificación">
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">ID Agente
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Nombre
                             </h5>
                         </label>
-                        <select id="cboIdAgente" name="cboIdAgente" class="form-control">
-                            <?php
-                                    while($fila = mysqli_fetch_array($respuestaAgentes))
-                                    {
-                                        echo "<option value=" . $fila['id'] . ">" . $fila["idAgente"] . "</option>";
-                                    }
-                                ?>
+                        <input type="text" class="form-control" id="txtNombre" name="txtNombre"
+                            placeholder="Ingrese el nombre">
+
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Primer Apellido
+                            </h5>
+                        </label>
+                        <input type="text" class="form-control" id="txtApellido1" name="txtApellido1"
+                            placeholder="Ingrese el primer apellido">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Segundo Apellido
+                            </h5>
+                        </label>
+                        <input type="text" class="form-control" id="'txtApellido2'" name="'txtApellido2'"
+                            placeholder="Ingrese el segundo apellido">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Correo
+                            </h5>
+                        </label>
+                        <input type="text" class="form-control" id="txtCorreo" name="txtCorreo"
+                            placeholder="Ingrese el correo">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Teléfono
+                            </h5>
+                        </label>
+                        <input type="text" class="form-control" id="txtTel" name="txtTel"
+                            placeholder="Ingrese el numero de teléfono">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Nacimiento
+                            </h5>
+                        </label>
+                        <input type="date" class="form-control" id="txtFechaNaci" name="txtFechaNaci"
+                            placeholder="Ingrese fecha de nacimiento">
+                    </div>
+                    <div class="col-sm-14">
+                        <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Rol</h5>
+
+                        <select id="cboPerfil" name="cboPerfil" class="form-control">
+                            <option value="0">Seleccione el rol</option>
+                            <option value="1">Gerente</option>
+                            <option value="2">Administrador</option>
+                            <option value="3">Agente</option>
                         </select>
                     </div>
+                    <br />
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Código Vehículo
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Contraseña
                             </h5>
                         </label>
-                        <select id="cboIdVehiculo" name="cboIdVehiculo" class="form-control">
-                        <option value="0">Seleccione código del vehículo</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Entrega
-                            </h5>
-                        </label>
-                        <input type="datetime-local" class="form-control" id="txtFechaEntrega" name="txtFechaEntrega"
-                            placeholder="Ingrese la fecha de entrega">
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Total
-                            </h5>
-                        </label>
-                        <input type="text" class="form-control" id="txtTotal" name="txtTotal"
-                            placeholder="Digíte el monto total">
-                    </div>
-                    <div class="form-group">
-                        <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Descripción
-                            </h5>
-                        </label>
-                        <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion"
-                            placeholder="Ingrese la descripción">
+                        <input type="password" class="form-control" id="txtContraseña" name="txtContraseña"
+                            placeholder="Ingrese su contraseña">
                     </div>
                     <br />
                     <div class="col text-center">
-                        <input type="submit" class="btn btn" value="Crear" name="btnNuevaFactura"
+                        <input type="submit" class="btn btn" value="Ingresar" name="btnRegistrar"
                             style="background-color: #bdbcb9; color: black;"></input>
                         <br /><br />
                     </div>
@@ -205,8 +200,8 @@ $AbiertaDB = AbrirDB();
             </div>
         </div>
         <br /><br /><br /><br />
-
     </div>
+    <!-- Fin espacio de información -->
 
     <!-- Propiedades necesarias para el correcto funcionamiento de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -221,5 +216,6 @@ $AbiertaDB = AbrirDB();
     <script>
     $('.carousel').carousel();
     </script>
-
 </body>
+
+</html>

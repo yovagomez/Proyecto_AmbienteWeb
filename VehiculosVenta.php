@@ -40,8 +40,6 @@ CerrarDB($AbiertaDB);
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="VehiculosAlquiler.php">Vehiculos Alquiler</a>
                         <a class="dropdown-item" href="VehiculosVenta.php">Vehiculos Venta</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -51,9 +49,17 @@ CerrarDB($AbiertaDB);
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="emple.php">Empleados</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="añdEmp.php">Añadir Empleado</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Servicios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
+                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
                     </div>
                 </li>
             </ul>
@@ -62,12 +68,10 @@ CerrarDB($AbiertaDB);
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <?php echo $_SESSION['NombreAgente']; ?>
+                            <i class="fas fa-user"></i> Geovanny<?php echo $_SESSION['NombreAgente']; ?>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 100%;">
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <a class="dropdown-item" href="emple.php">Ajustes</a>
-                            <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                            <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
                             <a class="dropdown-item" href="salir.php">Salir</a>
                         </div>
                     </li>
