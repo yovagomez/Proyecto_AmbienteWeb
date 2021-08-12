@@ -1,3 +1,12 @@
+<?php include 'conexion.php';
+$AbiertaDB = AbrirDB();
+
+$queryVA = "CALL ConsultarAgente('-1')";
+$respuestaVA = $AbiertaDB -> query($queryVA);
+
+CerrarDB($AbiertaDB);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -17,7 +26,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark scrolling-navbar fixed-top">
         <a class="navbar-brand" href="menu.php">FLIP CARS S.A</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            aria-controls="navbarSupportedContent" aria-expanded="true" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
 
@@ -29,10 +38,8 @@
                         Gestión Vehiculos
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Vehiculos Alquiler</a>
-                        <a class="dropdown-item" href="#">Vehiculos Venta</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="VehiculosAlquiler.php">Vehiculos Alquiler</a>
+                        <a class="dropdown-item" href="VehiculosVenta.php">Vehiculos Venta</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -41,25 +48,31 @@
                         Gestión de Personal
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="emple.html">Empleados</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        <a class="dropdown-item" href="emple.php">Empleados</a>
+                        <a class="dropdown-item" href="añdEmp.php">Añadir Empleado</a>
+                    </div>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Servicios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
+                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
                     </div>
                 </li>
             </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" >
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['NombreAgente']; ?>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user"></i> Geovanny<?php echo $_SESSION['NombreAgente']; ?>
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 100%;">
-                        <a class="dropdown-item" href="emple.php">Ajustes</a>
-                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
-                        <a class="dropdown-item" href="salir.php">Salir</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="emple.php">Ajustes</a>
+                            <a class="dropdown-item" href="salir.php">Salir</a>
                         </div>
                     </li>
                 </ul>
@@ -69,6 +82,46 @@
     <!-- Fin del NavBar/Barra del Menu -->
 
     <!-- Espacio Tabla de Información -->
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th scope="col">ID Agente</th>
+                <th scope="col">Fecha de Nacimiento</th>
+                <th scope="col">Nombre</th>
+                <th scope="col">Primer Apellido</th>
+                <th scope="col">Segundo Apellido</th>
+                <th scope="col">Correo</th>
+                <th scope="col">Teléfono</th>
+                <th scope="col">Función</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <?php
+
+                                  while($fila = mysqli_fetch_array($respuestaVA))
+                                {
+                                   echo "<tr>";
+                                   echo "<td>" . $fila['idAgente'] . "</td>";
+                                   echo "<td>" . $fila['fechaNaci'] . "</td>";
+                                   echo "<td>" . $fila['nombre'] . "</td>";
+                                   echo "<td>" . $fila['apellido1'] . "</td>";
+                                   echo "<td>" . $fila['apellido2'] . "</td>";
+                                   echo "<td>" . $fila['correo'] . "</td>";
+                                   echo "<td>" . $fila['tel'] . "</td>";
+                                   echo "<td><a href='#' class='btn btn-success'>Editar empleado</a></td>";
+                                   echo "</tr>";
+                                } 
+                        ?>
+        </tbody>
+    </table>
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
     <!-- Fin Espacio Tabla de Info -->
 
     <!-- Propiedades necesarias para el correcto funcionamiento de Bootstrap -->
