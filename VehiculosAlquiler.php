@@ -1,3 +1,12 @@
+<?php include 'conexion.php';
+$AbiertaDB = AbrirDB();
+
+$queryVA = "CALL ConsultarVA('-1')";
+$respuestaVA = $AbiertaDB -> query($queryVA);
+
+CerrarDB($AbiertaDB);
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -49,17 +58,17 @@
                 </li>
             </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" >
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['NombreAgente']; ?>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo $_SESSION['NombreAgente']; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 100%;">
-                        <a class="dropdown-item" href="emple.php">Ajustes</a>
-                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
-                        <a class="dropdown-item" href="salir.php">Salir</a>
+                            <a class="dropdown-item" href="emple.php">Ajustes</a>
+                            <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
+                            <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
+                            <a class="dropdown-item" href="salir.php">Salir</a>
                         </div>
                     </li>
                 </ul>
@@ -81,21 +90,47 @@
                 <th scope="col">Función</th>
             </tr>
         </thead>
+        <tbody>
+
+                        <?php
+
+                                  while($fila = mysqli_fetch_array($respuestaVA))
+                                {
+                                   echo "<tr>";
+                                   echo "<td>" . $fila['idVehiculosAlquiler'] . "</td>";
+                                   echo "<td>" . $fila['marca'] . "</td>";
+                                   echo "<td>" . $fila['modelo'] . "</td>";
+                                   echo "<td>" . $fila['color'] . "</td>";
+                                   echo "<td>" . $fila['placa'] . "</td>";
+                                   echo "<td>" . $fila['anio'] . "</td>";
+                                   echo "<td>" . $fila['resplado'] . "</td>";
+                                   echo "<td><a href='#' class='btn btn-success'>Editar Vehículo</a></td>";
+                                   echo "</tr>";
+                                } 
+                        ?>
+        </tbody>
     </table>
+
+    <script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
 
     <!-- Propiedades necesarias para el correcto funcionamiento de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"></script>
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"></script>
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"></script>
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
     <script>
-        $('.carousel').carousel();
+    $('.carousel').carousel();
     </script>
 
 </body>

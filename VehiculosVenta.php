@@ -1,25 +1,10 @@
-<?php
+<?php include 'conexion.php';
+$AbiertaDB = AbrirDB();
 
-session_start();
-include 'conexionBD.php';
-$bdAbierta = AbrirDB();
+$queryVV = "CALL ConsultarVV('-1')";
+$respuestaVV = $AbiertaDB -> query($queryVV);
 
-/*if(isset($_POST['btnIniciarSesion']))
-{
-    $usuario = "304590415";
-    $password = "ecalvo.123";
-
-    $rolUsuario = "2";
-
-    //Suponiendo que el logueo fue exitoso
-    $_SESSION['$rolUsuario'] = $rolUsuario;
-}*/
-
-$queryvehiculosventa = "CALL Consultar_VehiculosVenta('-1')";
-$respuestavehiculosventa = $bdAbierta -> query($queryvehiculosventa);
-
-CerrarDB($bdAbierta);
-
+CerrarDB($AbiertaDB);
 ?>
 
 <!DOCTYPE html>
@@ -73,17 +58,17 @@ CerrarDB($bdAbierta);
                 </li>
             </ul>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ml-auto" >
+                <ul class="navbar-nav ml-auto">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <?php echo $_SESSION['NombreAgente']; ?>
+                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <?php echo $_SESSION['NombreAgente']; ?>
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 100%;">
-                        <a class="dropdown-item" href="emple.php">Ajustes</a>
-                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
-                        <a class="dropdown-item" href="salir.php">Salir</a>
+                            <a class="dropdown-item" href="emple.php">Ajustes</a>
+                            <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
+                            <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
+                            <a class="dropdown-item" href="salir.php">Salir</a>
                         </div>
                     </li>
                 </ul>
@@ -105,30 +90,31 @@ CerrarDB($bdAbierta);
             </tr>
         </thead>
         <tbody>
-            
-        <?php
-                            while($fila = mysqli_fetch_array($respuestaUsuarios))
-                            {
-                                echo "<tr>";
-                                echo "<td>" . $fila['idVehiculosVenta'] . "</td>";
-                                echo "<td>" . $fila['marca'] . "</td>";
-                                echo "<td>" . $fila['modelo'] . "</td>";
-                                echo "<td>" . $fila['color'] . "</td>";
-                                echo "<td>" . $fila['anio'] . "</td>";
-                                echo "<td>" . $fila['respaldo'] . "</td>";
-                                echo "<td><a href='#' class='btn btn-success'>Editar Usuario</a></td>";
-                                echo "</tr>";
-                            }
+
+                        <?php
+
+                                  while($fila = mysqli_fetch_array($respuestaVV))
+                                {
+                                   echo "<tr>";
+                                   echo "<td>" . $fila['idVehiculosVenta'] . "</td>";
+                                   echo "<td>" . $fila['marca'] . "</td>";
+                                   echo "<td>" . $fila['modelo'] . "</td>";
+                                   echo "<td>" . $fila['color'] . "</td>";
+                                   echo "<td>" . $fila['anio'] . "</td>";
+                                   echo "<td>" . $fila['respaldo'] . "</td>";
+                                   echo "<td><a href='#' class='btn btn-success'>Editar Vehículo</a></td>";
+                                   echo "</tr>";
+                                } 
                         ?>
         </tbody>
     </table>
 
     <script>
-            $("#menu-toggle").click(function(e) {
-                e.preventDefault();
-                $("#wrapper").toggleClass("toggled");
-            });
-            </script>
+    $("#menu-toggle").click(function(e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    });
+    </script>
 
 
     <!-- Propiedades necesarias para el correcto funcionamiento de Bootstrap -->
