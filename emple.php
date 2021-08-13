@@ -109,7 +109,7 @@ CerrarDB($AbiertaDB);
                                    echo "<td>" . $fila['apellido2'] . "</td>";
                                    echo "<td>" . $fila['correo'] . "</td>";
                                    echo "<td>" . $fila['tel'] . "</td>";
-                                   echo "<td><a href='#' class='btn btn-success'>Editar empleado</a></td>";
+                                   echo "<td><a href='getEmp.php' class='btn btn-success'>Editar empleado</a></td>";
                                    echo "</tr>";
                                 } 
                         ?>
