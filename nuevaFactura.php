@@ -5,13 +5,13 @@ $AbiertaDB = AbrirDB();
      if(isset($_POST['btnNuevaFactura'])) 
      {
      
-         $cedula = $_POST['txtCedula'];
+         $cedula = $_POST['txtCedulaCliente'];
          $idAgente = $_POST['cboIdAgente'];
          $idVehiculo = $_POST['cboIdVehiculo'];
          $fechaEntrega = $_POST['txtFechaEntrega'];
          $total = $_POST['txtTotal'];
          $descripcion = $_POST['txtDescripcion'];
-         $queryNewFactura = "CALL nuevaFactura('$cedula','$idAgente',$idVehiculo,'$fechaEntrega',$total,'$descripcion')";
+         $queryNewFactura = "CALL nuevaFactura($cedula,$idAgente,$idVehiculo,'$fechaEntrega',$total,'$descripcion')";
          if($AbiertaDB -> query($queryNewFactura)){
              header("Location: menu.php");
          
@@ -22,14 +22,16 @@ $AbiertaDB = AbrirDB();
          
  
      }
-     $queryConsultarAgentes = "CALL consultarAgentes() ";
-     $respuestaAgentes = $AbiertaDB -> query($queryConsultarAgentes);
-
-     $queryConsultarVV = "CALL consultarVehiculosVenta() ";
-     $respuestaVV = $AbiertaDB -> query($queryConsultarVV);
-
-     $queryConsultarUsuarios = "CALL consultarUsuarios()";
+     $queryConsultarUsuarios = "CALL consultarUsuarios('-1')";
      $respuestaUsuarios = $AbiertaDB -> query($queryConsultarUsuarios);
+     $AbiertaDB ->next_result();
+     $queryConsultarAgentes = "CALL consultarAgentes('-1') ";
+     $respuestaAgentes = $AbiertaDB -> query($queryConsultarAgentes);
+     $AbiertaDB ->next_result();
+     $queryConsultarVV = "CALL ConsultarVV('-1') ";
+     $respuestaVV = $AbiertaDB -> query($queryConsultarVV);
+     $AbiertaDB ->next_result();
+    
 
      CerrarDB($AbiertaDB);
 ?>
@@ -123,10 +125,18 @@ $AbiertaDB = AbrirDB();
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cédula Cliente</h5>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cedula Cliente
+                            </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtCedula" name="txtCedula"
-                            placeholder="Ingrese cedula">
+                        <select id="txtCedulaCliente" name="txtCedulaCliente" class="form-control">
+                            <option value="-1">Seleccione la cédula del cliente</option>
+                            <?php
+                                    while($fila = mysqli_fetch_array($respuestaUsuarios))
+                                    {
+                                        echo "<option value=" . $fila['id'] . ">" . $fila["idUsuario"] . "</option>";
+                                    }
+                                ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>
@@ -134,41 +144,28 @@ $AbiertaDB = AbrirDB();
                             </h5>
                         </label>
                         <select id="cboIdAgente" name="cboIdAgente" class="form-control">
+                            <option value="-1">Seleccione Agente</option>
                             <?php
                                     while($fila = mysqli_fetch_array($respuestaAgentes))
                                     {
-                                        echo "<option value=" . $fila['id'] . ">" . $fila["idAgente"] . "</option>";
+                                        echo "<option value=" . $fila['id'] . ">" . $fila["nombre"] . "</option>";
                                     }
                                 ?>
                         </select>
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Código Vehículo
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Vehículo
                             </h5>
                         </label>
                         <select id="cboIdVehiculo" name="cboIdVehiculo" class="form-control">
-                        <option value="0">Seleccione código del vehículo</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
-                            <option value="13">13</option>
-                            <option value="14">14</option>
-                            <option value="15">15</option>
-                            <option value="16">16</option>
-                            <option value="17">17</option>
-                            <option value="18">18</option>
-                            <option value="19">19</option>
-                            <option value="20">20</option>
+                            <option value="-1">Seleccione el vehículo comprado</option>
+                            <?php
+                                    while($fila = mysqli_fetch_array($respuestaVV))
+                                    {
+                                        echo "<option value=" . $fila['idVehiculosVenta'] . ">" . $fila["marca"] . "</option>";
+                                    }
+                                ?>
                         </select>
                     </div>
                     <div class="form-group">
