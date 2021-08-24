@@ -5,20 +5,33 @@ $AbiertaDB = AbrirDB();
      if(isset($_POST['btnNuevoTiquete'])) 
      {
      
-         $cedula = $_POST['txtCedula'];
+         $cedula = $_POST['txtCedulaCliente'];
          $idAgente = $_POST['cboIdAgente'];
          $idVehiculo = $_POST['cboIdVehiculo'];
          $fechaEntrega = $_POST['txtFechaEntrega'];
+         $fechaDevolucion = $_POST['txtFechaDevolución'];
          $total = $_POST['txtTotal'];
          $descripcion = $_POST['txtDescripcion'];
-         $queryNewFactura = "CALL nuevaFactura('$cedula','$idAgente',$idVehiculo,'$fechaEntrega',$total,'$descripcion')";
-         if($AbiertaDB -> query($queryNewFactura)){
+         $queryNewTiquete = "CALL nuevoTiquete('$cedula','$idAgente',$idVehiculo,'$fechaEntrega','$fechaDevolucion',$total,'$descripcion')";
+         if($AbiertaDB -> query($queryNewTiquete)){
              header("Location: menu.php");
          
          }else{
              echo $AbiertaDB -> error;
          }
      }
+
+     $queryConsultarUsuarios = "CALL consultarUsuarios('-1')";
+     $respuestaUsuarios = $AbiertaDB -> query($queryConsultarUsuarios);
+     $AbiertaDB ->next_result();
+
+     $queryConsultarAgentes = "CALL consultarAgentes('-1') ";
+     $respuestaAgentes = $AbiertaDB -> query($queryConsultarAgentes);
+     $AbiertaDB ->next_result();
+     
+     $queryConsultarVA = "CALL ConsultarVA('-1') ";
+     $respuestaVA = $AbiertaDB -> query($queryConsultarVA);
+     $AbiertaDB ->next_result();
 
      CerrarDB($AbiertaDB);
 ?>
@@ -112,51 +125,80 @@ $AbiertaDB = AbrirDB();
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Marca</h5>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cedula Cliente
+                            </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtMarca" name="txtMarca"
-                            placeholder="Ingrese la marca">
+                        <select id="txtCedulaCliente" name="txtCedulaCliente" class="form-control">
+                            <option value="-1">Seleccione la cédula del cliente</option>
+                            <?php
+                                    while($fila = mysqli_fetch_array($respuestaUsuarios))
+                                    {
+                                        echo "<option value=" . $fila['id'] . ">" . $fila["idUsuario"] . "</option>";
+                                    }
+                                ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Modelo
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">ID Agente
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtModelo" name="txtModelo"
-                            placeholder="Ingrese el modelo">
-                        
+                        <select id="cboIdAgente" name="cboIdAgente" class="form-control">
+                            <option value="-1">Seleccione Agente</option>
+                            <?php
+                                    while($fila = mysqli_fetch_array($respuestaAgentes))
+                                    {
+                                        echo "<option value=" . $fila['id'] . ">" . $fila["nombre"] ." ". $fila["apellido1"] ." ". $fila["apellido2"] . "</option>";
+                                    }
+                                ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Color
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Vehículo
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtColor" name="txtColor"
-                            placeholder="Ingrese el color">
+                        <select id="cboIdVehiculo" name="cboIdVehiculo" class="form-control">
+                            <option value="-1">Seleccione el vehículo alquilado</option>
+                            <?php
+                                    while($fila = mysqli_fetch_array($respuestaVA))
+                                    {
+                                        echo "<option value=" . $fila['idVehiculosAlquiler'] . ">" . $fila["marca"] ."-". $fila["modelo"] . "</option>";
+                                    }
+                                ?>
+                        </select>
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Placa
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Entrega
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtPlaca" name="txtPlaca"
-                            placeholder="Ingrese la placa">
+                        <input type="datetime-local" class="form-control" id="txtFechaEntrega" name="txtFechaEntrega"
+                            placeholder="Ingrese la fecha de entrega">
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Año
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Devolución
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtAnio" name="txtAnio"
-                            placeholder="Digíte el año">
+                        <input type="datetime-local" class="form-control" id="txtFechaDevolución" name="txtFechaDevolución"
+                            placeholder="Ingrese la fecha de devolución">
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Respaldo
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Total
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtRespaldo" name="txtRespaldo"
-                            placeholder="Ingrese el respaldo">
+                        <input type="text" class="form-control" id="txtTotal" name="txtTotal"
+                            placeholder="Digíte el monto total">
+                    </div>
+                    <div class="form-group">
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Descripción
+                            </h5>
+                        </label>
+                        <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion"
+                            placeholder="Ingrese la descripción">
                     </div>
                     <br />
                     <div class="col text-center">
@@ -168,6 +210,7 @@ $AbiertaDB = AbrirDB();
             </div>
         </div>
         <br /><br /><br /><br />
+
     </div>
 
     <!-- Propiedades necesarias para el correcto funcionamiento de Bootstrap -->

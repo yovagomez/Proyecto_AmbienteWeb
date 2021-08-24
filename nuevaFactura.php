@@ -25,9 +25,11 @@ $AbiertaDB = AbrirDB();
      $queryConsultarUsuarios = "CALL consultarUsuarios('-1')";
      $respuestaUsuarios = $AbiertaDB -> query($queryConsultarUsuarios);
      $AbiertaDB ->next_result();
+
      $queryConsultarAgentes = "CALL consultarAgentes('-1') ";
      $respuestaAgentes = $AbiertaDB -> query($queryConsultarAgentes);
      $AbiertaDB ->next_result();
+     
      $queryConsultarVV = "CALL ConsultarVV('-1') ";
      $respuestaVV = $AbiertaDB -> query($queryConsultarVV);
      $AbiertaDB ->next_result();
@@ -163,7 +165,7 @@ $AbiertaDB = AbrirDB();
                             <?php
                                     while($fila = mysqli_fetch_array($respuestaVV))
                                     {
-                                        echo "<option value=" . $fila['idVehiculosVenta'] . ">" . $fila["marca"] . "</option>";
+                                        echo "<option value=" . $fila['idVehiculosVenta'] . ">" . $fila["marca"] ."-". $fila["modelo"] . "</option>";
                                     }
                                 ?>
                         </select>
