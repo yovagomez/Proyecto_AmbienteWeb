@@ -15,6 +15,7 @@
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.5.11/css/mdb.min.css" rel="stylesheet">
     <link href="templates\estilo.css" rel="stylesheet">
+    <link rel="stylesheet" href="templates/style.css">
     <script src="https://kit.fontawesome.com/b5379856aa.js" crossorigin="anonymous"></script>
     <title>Menu FLIP-CARS</title>
 </head>
@@ -80,7 +81,7 @@
     <!-- Fin del NavBar/Barra del Menu -->
 
     <!-- Carrucel de Imagenes -->
-    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel" style="overflow: scroll">
         <div class="carousel-inner">
             <div class="carousel-item active" style="background-image:url('img/audi.jpeg');">
                 <div class="absolute-div">
@@ -140,6 +141,29 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="sr-only">Next</span>
         </a>
+    </div>
+    <br/><br/><br/><br/><br/><br/><br/><br/>
+    <div class="container-fluid">
+        <h1 style="text-align: center;line-height: 100%;font-weight: 100;">
+            <p>LO TENEMOS A SUS ESTILO Y NECESIDAD</p>
+            <h5 style="text-align: center">En Flip Cars encontrara las mejores marcas en automoviles</h5>
+        </h1>
+
+        <br/><br/><br/>
+
+        <div class="item imgcontainer">
+            <a href="eventos.php" title="eventos">
+                <div class="img-small">
+                    <img src="https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-enterprise-conference-technology-unbounded-dreams-unlimited-stage-background-image_182258.jpg"
+                    class="scale_item" alt="Eventos Programados">
+                </div>
+                <h5>Eventos Programados</h5>    
+            </a>
+
+        </div>
+
+
+        
     </div>
     <!-- Fin del Carrucel de Imagenes -->
 
