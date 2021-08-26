@@ -157,21 +157,14 @@
             
             <a href="eventos.php">
                     <img src="https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-enterprise-conference-technology-unbounded-dreams-unlimited-stage-background-image_182258.jpg"
-                    class="w3-border w3-padding" alt="Eventos Programados" style="width:400px; height: 275px;opacity: 0.9;">
+                    class="w3-border w3-padding" alt="Eventos Programados" style="width:400px; height: 275px;opacity: 0.99;">
                 
                 <h5 style="color: black;">Eventos</h5>    
             </a>
             <br/><br/>
-            <a href="eventos.php">
-                    <img src="https://as01.epimg.net/showroom/imagenes/2020/12/22/portada/1608657705_010861_1608658257_noticia_normal_recorte1.jpg"
-                    class="w3-border w3-padding" alt="Eventos Programados" style="width:400px; height: 275px;opacity: 0.9;">
-                
-                <h5 style="color: black;">Agenda de Vehículos</h5>    
-            </a>
-            <br/><br/>
-            <a href="eventos.php">
+            <a href="clientes.php">
                     <img src="https://www.questionpro.com/blog/wp-content/uploads/2017/02/0184-768x512.jpg"
-                    class="w3-border w3-padding" alt="Eventos Programados" style="width:400px; height: 275px;opacity: 0.9;">
+                    class="w3-border w3-padding" alt="Eventos Programados" style="width:400px; height: 275px;opacity: 0.99;">
                 
                 <h5 style="color: black;">Clientes</h5>    
             </a>
