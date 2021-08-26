@@ -125,8 +125,8 @@ CerrarDB($bdAbierta);
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Id</h5>
                         </label>
-                        <input type="text" class="form-control" id="txtidVehiculosVenta" name="txtidVehiculosVenta"
-                            placeholder="Ingrese la identificación">
+                        <input type="text" class="form-control" id="txtidVehiculosAlquiler" name="txtidVehiculosAlquiler"
+                            placeholder="Ingrese la identificación" readonly value="<?php echo $VehiculoEncontrado['idVehiculosAlquiler']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -134,7 +134,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtmarca" name="txtmarca"
-                            placeholder="Ingrese el fabricante">
+                            placeholder="Ingrese el fabricante" value="<?php echo $VehiculoEncontrado['marca']; ?> ">
 
                     </div>
                     <div class="form-group">
@@ -143,7 +143,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtmodelo" name="txtmodelo"
-                            placeholder="Ingrese el modelo">
+                            placeholder="Ingrese el modelo" value="<?php echo $VehiculoEncontrado['modelo']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -151,7 +151,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtcolor'" name="'txtcolor'"
-                            placeholder="Ingrese el color">
+                            placeholder="Ingrese el color" value="<?php echo $VehiculoEncontrado['color']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -159,7 +159,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtplaca'" name="'txtplaca'"
-                            placeholder="Ingrese la placa">
+                            placeholder="Ingrese la placa" value="<?php echo $VehiculoEncontrado['placa']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -167,7 +167,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtanio" name="txtanio"
-                            placeholder="Ingrese el año de fabricación">
+                            placeholder="Ingrese el año de fabricación" value="<?php echo $VehiculoEncontrado['anio']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -175,7 +175,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtrespaldo" name="txtrespaldo"
-                            placeholder="Ingrese el respaldo">
+                            placeholder="Ingrese el respaldo" value="<?php echo $VehiculoEncontrado['respaldo']; ?> ">
                     </div>
             
                     <br />

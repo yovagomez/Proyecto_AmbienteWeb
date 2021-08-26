@@ -104,7 +104,7 @@ CerrarDB($AbiertaDB);
                                    echo "<td>" . $fila['placa'] . "</td>";
                                    echo "<td>" . $fila['anio'] . "</td>";
                                    echo "<td>" . $fila['resplado'] . "</td>";
-                                   echo "<td><a href='EditarAlquiler.php' class='btn btn-success'>Editar Vehículo</a></td>";
+                                   echo "<td><a href='EditarAlquiler.php?q=" . $fila['idVehiculosAlquiler'] . "' class='btn btn-success'>Editar Vehículo</a></td>";
                                    echo "</tr>";
                                 } 
                         ?>

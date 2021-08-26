@@ -52,8 +52,7 @@ CerrarDB($AbiertaDB);
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="emple.php">Empleados</a>
                         <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+
                     </div>
                 </li>
             </ul>
@@ -102,7 +101,7 @@ CerrarDB($AbiertaDB);
                                    echo "<td>" . $fila['color'] . "</td>";
                                    echo "<td>" . $fila['anio'] . "</td>";
                                    echo "<td>" . $fila['respaldo'] . "</td>";
-                                   echo "<td><a href='EditarVenta.php' class='btn btn-success'>Editar Vehículo</a></td>";
+                                   echo "<td><a href='EditarVenta.php?q=" . $fila['idVehiculosVenta'] . "' class='btn btn-success'>Editar Vehículo</a></td>";
                                    echo "</tr>";
                                 } 
                         ?>
