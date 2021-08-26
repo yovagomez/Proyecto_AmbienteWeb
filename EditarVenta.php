@@ -24,6 +24,8 @@ if(isset($_POST['btnActualizar']))
     $respaldo = $_POST['txtrespaldo'];
     $queryActualizar = "CALL ActualizarVehiculoV($idVehiculosVenta,'$marca','$modelo','$color',$anio,'$respaldo')";
     $respuestaActualizar=$bdAbierta -> query($queryActualizar);
+    header("Location: VehiculosVenta.php");
+
 
 }
 
