@@ -102,7 +102,7 @@ CerrarDB($AbiertaDB);
                                    echo "<td>" . $fila['color'] . "</td>";
                                    echo "<td>" . $fila['anio'] . "</td>";
                                    echo "<td>" . $fila['respaldo'] . "</td>";
-                                   echo "<td><a href='#' class='btn btn-success'>Editar Vehículo</a></td>";
+                                   echo "<td><a href='EditarVenta.php' class='btn btn-success'>Editar Vehículo</a></td>";
                                    echo "</tr>";
                                 } 
                         ?>
