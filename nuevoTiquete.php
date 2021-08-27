@@ -181,7 +181,7 @@ $AbiertaDB = AbrirDB();
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Horas Alquiler
                             </h5>
                         </label>
-                        <input type="number" class="form-control" id="txtHora" name="txtHora" onchange="MontoTotal()"
+                        <input type="number" class="form-control" id="txtHora" name="txtHora"
                             placeholder="Ingrese las horas de alquiler">
                     </div>
                     <div class="form-group">
@@ -241,15 +241,6 @@ $AbiertaDB = AbrirDB();
         }
 
         return true;
-    }
-
-    function MontoTotal() {
-
-        if ($("#cboIdVehiculo").val().length > "" && $("#txtHora").val().length > 0) {
-            $("#txtTotal").val($("#txtPrecioImpuesto").val() * $("#txtCantidad").val());
-        } else {
-            $("#txtTotal").val(0);
-        }
     }
     </script>
 

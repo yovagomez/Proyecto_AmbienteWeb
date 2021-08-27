@@ -1,16 +1,16 @@
 <?php
 
-session_start();
+
 $idEvento = $_GET['q'];
 
 include 'conexion.php';
-$bdAbierta = AbrirDB();
+$AbiertaDB = AbrirDB();
 
 
 if(isset($_POST['btnEliminar']))
 {
     $queryDropEvento = "CALL EliminarEvento('$idEvento')";
-    $bdAbierta -> query($queryDropEvento);
+    $AbiertaDB -> query($queryDropEvento);
     header("Location: eventos.php");
 }
 
@@ -22,23 +22,23 @@ if(isset($_POST['btnActualizar']))
     $fecha = $_POST["txtFecha"];
 
     $queryActualizar = "CALL ActualizarEventos($idEvento,'$descripcion','$lugar','$fecha')";
-    if($respuestaActualizar=$bdAbierta -> query($queryActualizar))
+    if($respuestaActualizar=$AbiertaDB -> query($queryActualizar))
     {
         header("Location: eventos.php");
     }else{
-        echo $bdAbierta -> error;
+        echo $AbiertaDB -> error;
     }
 
 
 }
 
 $queryEventos = "CALL ConsultarEventos('$idEvento')";
-$respuestaEventos = $bdAbierta -> query($queryEventos);
-$bdAbierta -> next_result();
+$respuestaEventos = $AbiertaDB -> query($queryEventos);
+$AbiertaDB -> next_result();
 
 $EventoEncontrado = mysqli_fetch_array($respuestaEventos);
 
-CerrarDB($bdAbierta);
+CerrarDB($AbiertaDB);
 
 ?>
 

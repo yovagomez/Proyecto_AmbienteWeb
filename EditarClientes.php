@@ -4,11 +4,11 @@
 $idCliente = $_GET['q'];
 
 include 'conexion.php';
-$bdAbierta = AbrirDB();
+$AbiertaDB = AbrirDB();
 
 if(isset($_POST['btnEliminar'])){
     $queryDropCliente = "CALL EliminarCliente('$idCliente')";
-    $bdAbierta -> query($queryDropCliente);
+    $AbiertaDB -> query($queryDropCliente);
     header("Location: clientes.php");
     
 }
@@ -23,15 +23,15 @@ if(isset($_POST['btnActualizar'])){
     $clave = $_POST["txtClave"];
 
     $queryUpdateClientes = "CALL ActualizarClientes($id,'$idUsuario','$nombre','$apellido1','$apellido2','$correo','$clave')";
-    $respuestaUpdateClientes = $bdAbierta -> query($queryUpdateClientes);
+    $respuestaUpdateClientes = $AbiertaDB -> query($queryUpdateClientes);
     header("Location: clientes.php");
 }
 
 $querryClientes = "CALL ConsultarClientes($idCliente)";
-$respuestaCliente = $bdAbierta -> query($querryClientes);
+$respuestaCliente = $AbiertaDB -> query($querryClientes);
 $ClienteEncontrado = mysqli_fetch_array($respuestaCliente);
 
-CerrarDB($bdAbierta);
+CerrarDB($AbiertaDB);
 
 ?>
 
