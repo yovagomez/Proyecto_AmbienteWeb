@@ -2,7 +2,6 @@
     session_start();
     include 'conexion.php';
     $AbiertaDB = AbrirDB();
-    $
 ?>
 
 <!DOCTYPE html>
