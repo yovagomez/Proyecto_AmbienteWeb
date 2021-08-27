@@ -6,14 +6,12 @@ $idVehiculosAlquiler = $_GET['q'];
 include 'conexion.php';
 $bdAbierta = AbrirDB();
 
-
 if(isset($_POST['btnEliminar']))
 {
     $queryEliminar = "CALL EliminarVA('$idVehiculosAlquiler')";
     $bdAbierta -> query($queryEliminar);
     header("Location: VehiculosAlquiler.php");
 }
-
 if(isset($_POST['btnActualizar']))
 {
     $idVehiculosAlquiler = $_POST['txtidVehiculosAlquiler'];
@@ -23,7 +21,10 @@ if(isset($_POST['btnActualizar']))
     $placa = $_POST['txtplaca'];
     $anio = $_POST['txtanio'];
     $respaldo = $_POST['txtrespaldo'];
-    $queryActualizar = "CALL ActualizarVehiculoA('$idVehiculosAlquiler','$marca','$modelo','$color','$placa','$anio','$respaldo')";
+    $queryActualizar = "CALL ActualizarVehiculoA($idVehiculosAlquiler,'$marca','$modelo','$color','$placa',$anio,'$respaldo')";
+    $respuestaActualizar=$bdAbierta -> query($queryActualizar);
+    header("Location: VehiculosAlquiler.php");
+
 
 }
 
@@ -125,8 +126,8 @@ CerrarDB($bdAbierta);
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Id</h5>
                         </label>
-                        <input type="text" class="form-control" id="txtidVehiculosAlquiler" name="txtidVehiculosAlquiler"
-                            placeholder="Ingrese la identificación" readonly value="<?php echo $VehiculoEncontrado['idVehiculosAlquiler']; ?> ">
+                        <input type="text" class="form-control" id="txtidVehiculosVenta" name="txtidVehiculosVenta"
+                            placeholder="Ingrese la identificación" readonly value="<?php echo $VehiculoEncontrado['idVehiculosVenta']; ?> "> 
                     </div>
                     <div class="form-group">
                         <label>
@@ -134,7 +135,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtmarca" name="txtmarca"
-                            placeholder="Ingrese el fabricante" value="<?php echo $VehiculoEncontrado['marca']; ?> ">
+                            placeholder="Ingrese el fabricante"value="<?php echo $VehiculoEncontrado['marca']; ?> ">
 
                     </div>
                     <div class="form-group">
@@ -143,7 +144,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtmodelo" name="txtmodelo"
-                            placeholder="Ingrese el modelo" value="<?php echo $VehiculoEncontrado['modelo']; ?> ">
+                            placeholder="Ingrese el modelo" value="<?php echo $VehiculoEncontrado['modelo']; ?> "> 
                     </div>
                     <div class="form-group">
                         <label>
@@ -151,7 +152,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtcolor'" name="'txtcolor'"
-                            placeholder="Ingrese el color" value="<?php echo $VehiculoEncontrado['color']; ?> ">
+                            placeholder="Ingrese el color" value="<?php echo $VehiculoEncontrado['color']; ?> "> 
                     </div>
                     <div class="form-group">
                         <label>
@@ -159,7 +160,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtplaca'" name="'txtplaca'"
-                            placeholder="Ingrese la placa" value="<?php echo $VehiculoEncontrado['placa']; ?> ">
+                            placeholder="Ingrese la placa" value="<?php echo $VehiculoEncontrado['placa']; ?> "> 
                     </div>
                     <div class="form-group">
                         <label>
@@ -177,7 +178,7 @@ CerrarDB($bdAbierta);
                         <input type="text" class="form-control" id="txtrespaldo" name="txtrespaldo"
                             placeholder="Ingrese el respaldo" value="<?php echo $VehiculoEncontrado['respaldo']; ?> ">
                     </div>
-            
+                    
                     <br />
                             <input type="submit" id="btnEliminar" name="btnEliminar" class="btn btn-danger" value="Eliminar" style="width:100%" >
                             <br /><br />

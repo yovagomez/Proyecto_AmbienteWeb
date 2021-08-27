@@ -40,8 +40,7 @@ CerrarDB($AbiertaDB);
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="VehiculosAlquiler.php">Vehiculos Alquiler</a>
                         <a class="dropdown-item" href="VehiculosVenta.php">Vehiculos Venta</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -51,9 +50,8 @@ CerrarDB($AbiertaDB);
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="emple.php">Empleados</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
+                        
+                        
                     </div>
                 </li>
             </ul>
