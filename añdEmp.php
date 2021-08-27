@@ -83,8 +83,8 @@
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
+                        <a class="dropdown-item" href="factura.php">Factura</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquete</a>
                     </div>
                 </li>
             </ul>

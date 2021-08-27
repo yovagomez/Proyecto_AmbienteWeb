@@ -20,7 +20,7 @@
     <title>Menu FLIP-CARS</title>
 </head>
 
-<body>
+<body style="background: #d6d6d6;">
     <!-- Bloque de codigo del NavBar/Barra del Menu -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark scrolling-navbar fixed-top">
         <a class="navbar-brand" href="menu.php">FLIP CARS S.A</a>
@@ -57,8 +57,8 @@
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
+                        <a class="dropdown-item" href="factura.php">Factura</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquete</a>
                     </div>
                 </li>
             </ul>
@@ -158,14 +158,14 @@
             <a href="eventos.php">
                     <img src="https://png.pngtree.com/thumb_back/fw800/back_our/20190621/ourmid/pngtree-enterprise-conference-technology-unbounded-dreams-unlimited-stage-background-image_182258.jpg"
                     class="w3-border w3-padding" alt="Eventos Programados" style="width:400px; height: 275px;opacity: 0.99;">
-                
+                <br/><br/>
                 <h5 style="color: black;">Eventos</h5>    
             </a>
             <br/><br/>
             <a href="clientes.php">
                     <img src="https://www.questionpro.com/blog/wp-content/uploads/2017/02/0184-768x512.jpg"
                     class="w3-border w3-padding" alt="Eventos Programados" style="width:400px; height: 275px;opacity: 0.99;">
-                
+                <br/><br/>
                 <h5 style="color: black;">Clientes</h5>    
             </a>
 

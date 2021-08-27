@@ -62,8 +62,8 @@
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="nuevaFactura.php">Facturas</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Tiquetes</a>
+                        <a class="dropdown-item" href="factura.php">Facturas</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
                     </div>
                 </li>
             </ul>
@@ -96,6 +96,7 @@
         <table class="table">
             <thead class="thead-dark">
                 <tr style="text-align: center;"> 
+                    <th scope="col">ID</th>
                     <th scope="col">Cédula</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">1er Apellido</th>
@@ -112,6 +113,7 @@
                                   while($fila = mysqli_fetch_array($respuestaCliente))
                                 {
                                    echo "<tr style='text-align: center'>";
+                                   echo "<td>" . $fila['id'] . "</td>";
                                    echo "<td>" . $fila['idUsuario'] . "</td>";
                                    echo "<td>" . $fila['nombre'] . "</td>";
                                    echo "<td>" . $fila['apellido1'] . "</td>";

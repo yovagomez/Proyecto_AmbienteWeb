@@ -9,12 +9,12 @@ $AbiertaDB = AbrirDB();
          $idAgente = $_POST['cboIdAgente'];
          $idVehiculo = $_POST['cboIdVehiculo'];
          $fechaEntrega = $_POST['txtFechaEntrega'];
-         $fechaDevolucion = $_POST['txtFechaDevolución'];
+         $hora = $_POST['txtHora'];
          $total = $_POST['txtTotal'];
          $descripcion = $_POST['txtDescripcion'];
-         $queryNewTiquete = "CALL nuevoTiquete('$cedula','$idAgente',$idVehiculo,'$fechaEntrega','$fechaDevolucion',$total,'$descripcion')";
+         $queryNewTiquete = "CALL nuevoTiquete('$cedula','$idAgente',$idVehiculo,'$fechaEntrega',$hora,$total,'$descripcion')";
          if($AbiertaDB -> query($queryNewTiquete)){
-             header("Location: menu.php");
+             header("Location: tiquete.php");
          
          }else{
              echo $AbiertaDB -> error;
@@ -92,8 +92,8 @@ $AbiertaDB = AbrirDB();
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
+                        <a class="dropdown-item" href="factura.php">Facturas</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
                     </div>
                 </li>
             </ul>
@@ -122,7 +122,7 @@ $AbiertaDB = AbrirDB();
                 <h3>Nuevo Tiquete</h3>
             </div>
             <div class="panel-body">
-                <form action="" method="POST">
+                <form action="" method="POST" onsubmit="return ValidarDatos();">
                     <div class="form-group">
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cedula Cliente
@@ -178,11 +178,11 @@ $AbiertaDB = AbrirDB();
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Devolución
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Horas Alquiler
                             </h5>
                         </label>
-                        <input type="datetime-local" class="form-control" id="txtFechaDevolución" name="txtFechaDevolución"
-                            placeholder="Ingrese la fecha de devolución">
+                        <input type="number" class="form-control" id="txtHora" name="txtHora" onchange="MontoTotal()"
+                            placeholder="Ingrese las horas de alquiler">
                     </div>
                     <div class="form-group">
                         <label>
@@ -202,8 +202,7 @@ $AbiertaDB = AbrirDB();
                     </div>
                     <br />
                     <div class="col text-center">
-                        <input type="submit" class="btn btn" value="Crear" name="btnNuevoTiquete"
-                            style="background-color: #bdbcb9; color: black;"></input>
+                        <input type="submit" class="btn btn-success" value="Crear" name="btnNuevoTiquete"></input>
                         <br /><br />
                     </div>
                 </form>
@@ -225,6 +224,33 @@ $AbiertaDB = AbrirDB();
     </script>
     <script>
     $('.carousel').carousel();
+
+    function ValidarDatos() {
+        var cliente = document.getElementById("txtCedulaCliente").value;
+        var agente = document.getElementById("cboIdAgente").value;
+        var fecha = document.getElementById("txtFechaEntrega").value;
+        var horas = document.getElementById("txtHora").value;
+        var vehiculo = document.getElementById("cboIdVehiculo").value;
+        var total = document.getElementById("txtTotal").value;
+        var descripcion = document.getElementById("txtDescripcion").value;
+
+        if (cliente == "" || agente == "" || fecha == "" || horas == "" || vehiculo == "" || total == "" || total ==
+            "") {
+            alert("Ningún espacio puede ir vacío");
+            return false;
+        }
+
+        return true;
+    }
+
+    function MontoTotal() {
+
+        if ($("#cboIdVehiculo").val().length > "" && $("#txtHora").val().length > 0) {
+            $("#txtTotal").val($("#txtPrecioImpuesto").val() * $("#txtCantidad").val());
+        } else {
+            $("#txtTotal").val(0);
+        }
+    }
     </script>
 
 </body>

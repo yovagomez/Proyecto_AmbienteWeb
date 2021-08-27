@@ -66,8 +66,8 @@ CerrarDB($AbiertaDB);
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown" style="right: 100%;">
                             <a class="dropdown-item" href="emple.php">Ajustes</a>
-                            <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                            <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
+                            <a class="dropdown-item" href="factura.php">Facturas</a>
+                            <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
                             <a class="dropdown-item" href="salir.php">Salir</a>
                         </div>
                     </li>

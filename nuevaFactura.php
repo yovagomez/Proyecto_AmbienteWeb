@@ -13,7 +13,7 @@ $AbiertaDB = AbrirDB();
          $descripcion = $_POST['txtDescripcion'];
          $queryNewFactura = "CALL nuevaFactura($cedula,$idAgente,$idVehiculo,'$fechaEntrega',$total,'$descripcion')";
          if($AbiertaDB -> query($queryNewFactura)){
-             header("Location: menu.php");
+             header("Location: factura.php");
          
          }else{
              echo $AbiertaDB -> error;
@@ -94,8 +94,8 @@ $AbiertaDB = AbrirDB();
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
+                        <a class="dropdown-item" href="factura.php">Facturas</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
                     </div>
                 </li>
             </ul>
@@ -124,7 +124,7 @@ $AbiertaDB = AbrirDB();
                 <h3>Nueva Factura</h3>
             </div>
             <div class="panel-body">
-                <form action="" method="POST">
+                <form action="" method="POST" onsubmit="return ValidarDatos();">
                     <div class="form-group">
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cedula Cliente
@@ -155,12 +155,21 @@ $AbiertaDB = AbrirDB();
                                 ?>
                         </select>
                     </div>
+
+                    <div class="form-group">
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Entrega
+                            </h5>
+                        </label>
+                        <input type="datetime-local" class="form-control" id="txtFechaEntrega" name="txtFechaEntrega">
+                    </div>
                     <div class="form-group">
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Vehículo
                             </h5>
                         </label>
-                        <select id="cboIdVehiculo" name="cboIdVehiculo" class="form-control">
+                        <select id="cboIdVehiculo" name="cboIdVehiculo" class="form-control"
+                            onchange="PrecioVehiculo();">
                             <option value="-1">Seleccione el vehículo comprado</option>
                             <?php
                                     while($fila = mysqli_fetch_array($respuestaVV))
@@ -172,32 +181,21 @@ $AbiertaDB = AbrirDB();
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Entrega
-                            </h5>
-                        </label>
-                        <input type="datetime-local" class="form-control" id="txtFechaEntrega" name="txtFechaEntrega"
-                            placeholder="Ingrese la fecha de entrega">
-                    </div>
-                    <div class="form-group">
-                        <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Total
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtTotal" name="txtTotal"
-                            placeholder="Digíte el monto total">
+                        <input type="number" class="form-control" id="txtTotal" name="txtTotal">
                     </div>
                     <div class="form-group">
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Descripción
                             </h5>
                         </label>
-                        <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion"
-                            placeholder="Ingrese la descripción">
+                        <input type="text" class="form-control" id="txtDescripcion" name="txtDescripcion">
                     </div>
                     <br />
                     <div class="col text-center">
-                        <input type="submit" class="btn btn" value="Crear" name="btnNuevaFactura"
-                            style="background-color: #bdbcb9; color: black;"></input>
+                        <input type="submit" class="btn btn-success" value="Crear" name="btnNuevaFactura"></input>
                         <br /><br />
                     </div>
                 </form>
@@ -206,6 +204,11 @@ $AbiertaDB = AbrirDB();
         <br /><br /><br /><br />
 
     </div>
+
+
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="css/simple-sidebar.js"></script>
 
     <!-- Propiedades necesarias para el correcto funcionamiento de Bootstrap -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
@@ -219,6 +222,22 @@ $AbiertaDB = AbrirDB();
     </script>
     <script>
     $('.carousel').carousel();
+
+    function ValidarDatos() {
+        var cliente = document.getElementById("txtCedulaCliente").value;
+        var agente = document.getElementById("cboIdAgente").value;
+        var fecha = document.getElementById("txtFechaEntrega").value;
+        var vehiculo = document.getElementById("cboIdVehiculo").value;
+        var total = document.getElementById("txtTotal").value;
+        var descripcion = document.getElementById("txtDescripcion").value;
+
+        if (cliente == "" || agente == "" || fecha == "" || vehiculo == "" || total == "" || descripcion == "") {
+            alert("Ningún espacio puede ir vacío");
+            return false;
+        }
+
+        return true;
+    }
     </script>
 
 </body>

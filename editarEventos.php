@@ -96,8 +96,8 @@ CerrarDB($bdAbierta);
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="nuevaFactura.php">Facturas</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Tiquetes</a>
+                        <a class="dropdown-item" href="factura.php">Facturas</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
                     </div>
                 </li>
             </ul>

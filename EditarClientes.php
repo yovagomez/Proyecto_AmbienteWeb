@@ -1,21 +1,19 @@
 <?php
 
-session_start();
+
 $idCliente = $_GET['q'];
 
 include 'conexion.php';
 $bdAbierta = AbrirDB();
 
-
-if(isset($_POST['btnEliminar']))
-{
+if(isset($_POST['btnEliminar'])){
     $queryDropCliente = "CALL EliminarCliente('$idCliente')";
     $bdAbierta -> query($queryDropCliente);
     header("Location: clientes.php");
+    
 }
 
-if(isset($_POST['btnActualizar']))
-{
+if(isset($_POST['btnActualizar'])){
     $id = $_POST["txtid"];
     $idUsuario = $_POST["txtIdUsuario"];
     $nombre = $_POST["txtNombre"];
@@ -24,22 +22,14 @@ if(isset($_POST['btnActualizar']))
     $correo = $_POST["txtCorreo"];
     $clave = $_POST["txtClave"];
 
-    $queryActualizar = "CALL ActualizarClientes($id,'$idUsuario','$nombre','$apellido1','$apellido2','$correo','$clave')";
-    if($respuestaActualizar=$bdAbierta -> query($queryActualizar))
-    {
-        header("Location: clientes.php");
-    }else{
-        echo $bdAbierta -> error;
-    }
-
-
+    $queryUpdateClientes = "CALL ActualizarClientes($id,'$idUsuario','$nombre','$apellido1','$apellido2','$correo','$clave')";
+    $respuestaUpdateClientes = $bdAbierta -> query($queryUpdateClientes);
+    header("Location: clientes.php");
 }
 
-$queryClientes = "CALL ConsultarClientes('$idCliente')";
-$respuestaClientes = $bdAbierta -> query($queryClientes);
-$bdAbierta -> next_result();
-
-$ClienteEncontrado = mysqli_fetch_array($respuestaClientes);
+$querryClientes = "CALL ConsultarClientes($idCliente)";
+$respuestaCliente = $bdAbierta -> query($querryClientes);
+$ClienteEncontrado = mysqli_fetch_array($respuestaCliente);
 
 CerrarDB($bdAbierta);
 
@@ -99,8 +89,8 @@ CerrarDB($bdAbierta);
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="nuevaFactura.php">Facturas</a>
-                        <a class="dropdown-item" href="nuevoTiquete.php">Tiquetes</a>
+                        <a class="dropdown-item" href="factura.php">Facturas</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
                     </div>
                 </li>
             </ul>
@@ -126,14 +116,14 @@ CerrarDB($bdAbierta);
         <div class="panel panel-info">
             <div class="panel-heading" style="text-align: center;">
                 <br /><br /><br />
-                <b style="color: white;font-size: 300%;">Actualización de Clientes</b>
+                <b style="font-size: 300%;">Actualización de Clientes</b>
                 <br /><br /><br />
             </div>
             <div class="panel-body">
                 <form action="" method="POST">
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;color: white;">ID Cliente
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif">ID Cliente
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtid" name="txtid" readonly
@@ -141,7 +131,7 @@ CerrarDB($bdAbierta);
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;color: white;">Cédula Cliente
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif">Cédula Cliente
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtIdUsuario" name="txtIdUsuario"
@@ -151,7 +141,7 @@ CerrarDB($bdAbierta);
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;color: white;">Nombre
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif">Nombre
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtNombre" name="txtNombre"
@@ -159,7 +149,7 @@ CerrarDB($bdAbierta);
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;color: white;">1er Apellido
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif">1er Apellido
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtApellido1'" name="'txtApellido1'"
@@ -167,7 +157,7 @@ CerrarDB($bdAbierta);
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;color: white;">2edo Apellido
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif">2edo Apellido
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtApellido2'" name="'txtApellido2'"
@@ -175,7 +165,7 @@ CerrarDB($bdAbierta);
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;color: white;">Correo
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif">Correo
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtCorreo'" name="'txtCorreo'"
@@ -183,7 +173,7 @@ CerrarDB($bdAbierta);
                     </div>
                     <div class="form-group">
                         <label>
-                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;color: white;">Clave
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif">Clave
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtClave'" name="'txtClave'"
