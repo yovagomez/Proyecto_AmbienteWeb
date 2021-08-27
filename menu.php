@@ -1,7 +1,8 @@
 <?php
     session_start();
-    $_SESSION['nombre'] = $usuario;
-
+    include 'conexion.php';
+    $AbiertaDB = AbrirDB();
+    $
 ?>
 
 <!DOCTYPE html>
@@ -49,6 +50,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="emple.php">Empleados</a>
                         <a class="dropdown-item" href="añdEmp.php">Añadir Empleado</a>
+                        <a class="dropdown-item" href="clientes.php">Clientes</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
