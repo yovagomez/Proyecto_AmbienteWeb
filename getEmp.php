@@ -23,19 +23,20 @@ if(isset($_POST['btnActualizar']))
     $correo = $_POST['txtCorreo'];
     $telefono = $_POST['txtTel'];
     $contraseña = $_POST['txtContraseña'];
-    $queryActualizar = "CALL ActualizarEmpleado('$cedula','$nombre','$apellidoP','$apellidoS','$correo','$telefono','$contraseña)";
-
-    if($bdAbierta -> query($queryActualizar))
-    {
-        EnviarCorreo($correo,'Su información se ha actualizado en nuestra base de datos','Notificación de Datos');        
-    }
+    $queryActualizar = "CALL ActualizarEmpleado('$cedula', '$nombre','$apellidoP','$apellidoS','$correo','$telefono','$contraseña)";
+    $respuestaActualizar=$bdAbierta -> query($queryActualizar);
+    header("Location: emple.php");
 }
 
-$queryUsuario = "CALL ConsultarAgente('$cedula')";
-$respuestaUsuario = $bdAbierta -> query($queryUsuario);
+$queryEmpleado = "CALL ConsultarAgente('$cedula')";
+$respuestaEmpleado = $bdAbierta -> query($queryEmpleado);
 $bdAbierta -> next_result();
 
-$usuarioEncontrado = mysqli_fetch_array($respuestaUsuario);
+$queryRoles = "CALL Consultar_Roles()";
+$respuestaRoles = $bdAbierta -> query($queryRoles);
+$bdAbierta -> next_result();
+
+$empleadoEncontrado = mysqli_fetch_array($respuestaEmpleado);
 
 CerrarDB($bdAbierta);
 
@@ -93,8 +94,8 @@ CerrarDB($bdAbierta);
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="factura.php">Facturas</a>
-                        <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
+                        <a class="dropdown-item" href="nuevaFactura.php">Crear Factura</a>
+                        <a class="dropdown-item" href="nuevoTiquete.php">Crear Tiquete</a>
                     </div>
                 </li>
             </ul>
@@ -129,8 +130,8 @@ CerrarDB($bdAbierta);
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Cedula</h5>
                         </label>
-                        <input type="text" class="form-control" id="txtCedula" name="txtCedula"
-                            placeholder="Ingrese el numero de identificación">
+                        <input type="text" class="form-control" id="txtCedula" name="txtCedula" readonly
+                            value="<?php echo $empleadoEncontrado['idAgente']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -138,8 +139,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtNombre" name="txtNombre"
-                            placeholder="Ingrese el nombre">
-
+                            value="<?php echo $empleadoEncontrado['nombre']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -147,7 +147,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtApellido1" name="txtApellido1"
-                            placeholder="Ingrese el primer apellido">
+                            value="<?php echo $empleadoEncontrado['apellido1']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -155,7 +155,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="'txtApellido2'" name="'txtApellido2'"
-                            placeholder="Ingrese el segundo apellido">
+                            value="<?php echo $empleadoEncontrado['apellido2']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -163,7 +163,7 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtCorreo" name="txtCorreo"
-                            placeholder="Ingrese el correo">
+                            value="<?php echo $empleadoEncontrado['correo']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
@@ -171,25 +171,23 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="text" class="form-control" id="txtTel" name="txtTel"
-                            placeholder="Ingrese el numero de teléfono">
+                            value="<?php echo $empleadoEncontrado['tel']; ?> ">
                     </div>
                     <div class="form-group">
                         <label>
                             <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Fecha Nacimiento
                             </h5>
                         </label>
-                        <input type="date" class="form-control" id="txtFechaNaci" name="txtFechaNaci"
-                            placeholder="Ingrese fecha de nacimiento">
+                        <input type="text" class="form-control" id="txtFechaNaci" name="txtFechaNaci" readonly
+                            value="<?php echo $empleadoEncontrado['fechaNaci']; ?> ">
                     </div>
                     <div class="col-sm-14">
-                        <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Rol</h5>
-
-                        <select id="cboPerfil" name="cboPerfil" class="form-control">
-                            <option value="0">Seleccione el rol</option>
-                            <option value="1">Gerente</option>
-                            <option value="2">Administrador</option>
-                            <option value="3">Agente</option>
-                        </select>
+                        <label>
+                            <h5 style="font-family: Georgia, 'Times New Roman', Times, serif;">Rol
+                            </h5>
+                        </label>
+                        <input type="text" class="form-control" id="txtFechaNaci" name="txtFechaNaci" readonly
+                            value="<?php echo $empleadoEncontrado['idRol']; ?> ">
                     </div>
                     <br />
                     <div class="form-group">
@@ -198,11 +196,13 @@ CerrarDB($bdAbierta);
                             </h5>
                         </label>
                         <input type="password" class="form-control" id="txtContraseña" name="txtContraseña"
-                            placeholder="Ingrese su contraseña">
+                            value="<?php echo $empleadoEncontrado['clave']; ?> ">
                     </div>
                     <br />
                     <div class="col text-center">
-                        <input type="submit" class="btn btn" value="Ingresar" name="btnRegistrar"
+                        <input type="submit" class="btn btn" value="Actualizar" name="btnActualizar"
+                            style="background-color: #bdbcb9; color: black;"></input>
+                        <input type="submit" class="btn btn" value="Eliminar" name="btnEliminar"
                             style="background-color: #bdbcb9; color: black;"></input>
                         <br /><br />
                     </div>

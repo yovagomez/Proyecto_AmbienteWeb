@@ -1,7 +1,7 @@
 <?php include 'conexion.php';
 $AbiertaDB = AbrirDB();
 
-$queryVA = "CALL ConsultarAgente('-1')";
+$queryVA = "CALL ConsultarAgentes('-1')";
 $respuestaVA = $AbiertaDB -> query($queryVA);
 
 CerrarDB($AbiertaDB);
@@ -109,7 +109,7 @@ CerrarDB($AbiertaDB);
                                    echo "<td>" . $fila['apellido2'] . "</td>";
                                    echo "<td>" . $fila['correo'] . "</td>";
                                    echo "<td>" . $fila['tel'] . "</td>";
-                                   echo "<td><a href='getEmp.php' class='btn btn-success'>Editar empleado</a></td>";
+                                   echo "<td><a href='getEmp.php?q=" . $fila['idAgente'] . "' class='btn btn-warning'>Editar</a></td>";
                                    echo "</tr>";
                                 } 
                         ?>

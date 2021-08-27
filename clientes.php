@@ -54,6 +54,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="emple.php">Empleados</a>
                         <a class="dropdown-item" href="añdEmp.php">Añadir Empleado</a>
+                        <a class="dropdown-item" href="clientes.php">Clientes</a>
                     </div>
                 </li>
                 <li class="nav-item dropdown">
@@ -62,8 +63,8 @@
                         Servicios
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="factura.php">Facturas</a>
-                        <a class="dropdown-item" href="tiquete.php">Tiquetes</a>
+                        <a class="dropdown-item" href="factura.php">Factura</a>
+                        <a class="dropdown-item" href="tiquete.php">Tiquete</a>
                     </div>
                 </li>
             </ul>
@@ -86,28 +87,20 @@
     <!-- Fin del NavBar/Barra del Menu -->
 
     <div class="container;style=text-align: center;">
-        <img src="https://indiepropub.com/wp-content/uploads/2021/01/fdcccda0-977b-11e9-bd4f-6c391b95e689-1.jpg"
-            style="opacity: 0.99;
-         width: 1950px;height: 600px;">
-        <br /><br /><br />
         <p style="font-family:Verdana, Geneva, Tahoma, sans-serif;font-size: 350%;text-align: center;">
             CLIENTES</p>
-        <br /><br /><br /><br />
         <table class="table">
             <thead class="thead-dark">
                 <tr style="text-align: center;"> 
                     <th scope="col">ID</th>
                     <th scope="col">Cédula</th>
                     <th scope="col">Nombre</th>
-                    <th scope="col">1er Apellido</th>
-                    <th scope="col">2do Apellido</th>
+                    <th scope="col">Primer Apellido</th>
+                    <th scope="col">Segundo Apellido</th>
                     <th scope="col">Correo</th>
-                    <th scope="col">Clave</th>
-                    <th scope="col">Acción</th>
                 </tr>
             </thead>
             <tbody>
-
                 <?php
 
                                   while($fila = mysqli_fetch_array($respuestaCliente))
@@ -119,8 +112,6 @@
                                    echo "<td>" . $fila['apellido1'] . "</td>";
                                    echo "<td>" . $fila['apellido2'] . "</td>";
                                    echo "<td>" . $fila['correo'] . "</td>";
-                                   echo "<td>" . $fila['clave'] . "</td>";
-                                   echo "<td><a href='EditarClientes.php?q=" . $fila['id'] . "' class='btn btn-danger'>Editar</a></td>";
                                    echo "</tr>";
                                 } 
                         ?>
